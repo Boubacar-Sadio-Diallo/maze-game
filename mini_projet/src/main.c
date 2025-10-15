@@ -1,7 +1,11 @@
 #include <stdio.h> 
 #include <stdlib.h>
 #include <time.h>
-#include "./headers/labyrinthe.h"
+#include "../headers/menu.h"
+// #include "../headers/generation.h"
+// #include "../headers/labyrinthe.h"
+// #include "../headers/jeu.h"
+// #include "../headers/affichage.h"
 
 int main(void) {
 
@@ -11,7 +15,7 @@ int main(void) {
     menu();
     // generer_labyrinthe(lab);
     // afficher_labyrinthe(lab);
-    //liberer_labyrinthe(lab);
+    // liberer_labyrinthe(lab);
     //free(lab);
     return 0;
 }

@@ -5,3 +5,14 @@
  */
 void menu(void);
 
+/**
+ * @brief Construct a new choose lab object
+ * 
+ */
+void choose_lab(void);
+
+/**
+ * @brief 
+ * 
+ */
+void liste_labyrinthes(void);

@@ -7,8 +7,8 @@
  struct labyrinthe{
     unsigned int hauteur, largeur;
     unsigned int taille;
-    int in;
-    int out;
+    // int in;
+    // int out;
     char * nom;// nom de labyrinthe
     int ** array;
 } ;
@@ -25,8 +25,15 @@ typedef struct cellule Cellule;
 /**
  * @brief 
  * 
+ * @param nom 
  */
-Labyrinthe *info_lab(void);
+void ajouter_index(const char *nom);
+
+/**
+ * @brief 
+ * 
+ */
+Labyrinthe *init_lab(void);
 
 /**
  *@brief alloue et initialise le labyrinthe
@@ -35,7 +42,7 @@ Labyrinthe *info_lab(void);
  *@param nom represente le nom du jour
  *@return retourne un labyrinthe
  */
-Labyrinthe *creer_labyrinthe(void);
+Labyrinthe *creer_labyrinthe(unsigned hauteur, unsigned largeur, const char *nom);
 
 /**
  * @brief enregistre le labyrinthe generé dans un fichier .cfg
@@ -62,7 +69,7 @@ void liberer_labyrinthe(Labyrinthe *labyrinthe);
  *@param 
  *@return 
  */
-void charger_labyrinthe(const char *filename, size_t num_labyrinthe);
+Labyrinthe *charger_labyrinthe(const char *filename);
 
 
 /**

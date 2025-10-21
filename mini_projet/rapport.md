@@ -31,8 +31,11 @@ sortie est représentée par le symbole –
 ### même chose que la deuxième étape pour le compte rendu
 2. Etape 2 /6 points
 Au démarrage du programme, un menu permet à l’utilisateur de :
-• Créer un labyrinthe ;
-• Charger un labyrinthe ;
+### Créer un labyrinthe ;
+   
+### Charger un labyrinthe ;
+    Le programme doit alors lire un fichier
+    pour recharger un labyrinthe précédemment créé. L’utilisateur est alors renvoyé au menu.
 • Jouer ;
 • Quitter.
 

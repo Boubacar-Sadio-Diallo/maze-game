@@ -107,7 +107,7 @@ void afficher_labyrinthe(Labyrinthe *lab) {
     for (unsigned int i = 0; i < lab->hauteur; i++) {
         for (unsigned int j = 0; j < lab->largeur; j++) {
             if (lab->array[i][j] == -1) printf("#");
-            else if (lab->array[i][j] == -2) printf("O");
+            else if (lab->array[i][j] == -2) printf("o");
             else if (lab->array[i][j] == -3) printf("_");
             else printf(" "); // cellule ouverte
         }

@@ -22,8 +22,9 @@ void melanger_murs(Cellule *murs, int n) {
 
 /* Trouver la racine de l'ensemble (Union-Find simple) */
 int find(int *sets, int index) {
-    if (sets[index] != index)
+    if (sets[index] != index){
         sets[index] = find(sets, sets[index]);
+    }
     return sets[index];
 }
 
@@ -70,7 +71,7 @@ void generer_labyrinthe(Labyrinthe *lab) {
         sets[i] = i;
 
     // Créer liste des murs entre cellules
-    Cellule murs[1000]; 
+    Cellule murs[1000];
     int nb_murs = 0;
     for (unsigned int i = 1; i < lab->hauteur-1; i += 2) {
         for (unsigned int j = 1; j < lab->largeur-1; j += 2) {

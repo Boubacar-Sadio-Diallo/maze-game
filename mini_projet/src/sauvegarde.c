@@ -73,8 +73,7 @@ Labyrinthe *charger_labyrinthe(const char *nom) {
             else continue;
         }
     }
-
-
+    
     fclose(f);
     printf("\nLabyrinthe '%s' chargé avec succès (%ux%u)\n", lab->nom, lab->hauteur, lab->largeur);
 

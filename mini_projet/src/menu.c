@@ -33,7 +33,7 @@ void liste_labyrinthes(void) {
  * @brief Construct a new choose lab object
  * 
  */
-void choose_lab(void){
+Labyrinthe *choose_lab(void){
     char choix_nom[100];
     printf("Entrez le nom du labyrinthe à charger : ");
     scanf("%99s", choix_nom);
@@ -41,16 +41,18 @@ void choose_lab(void){
     Labyrinthe *lab = charger_labyrinthe(choix_nom);
     if (lab) {
         afficher_labyrinthe(lab);
-        liberer_labyrinthe(lab);
+        // liberer_labyrinthe(lab);
     } else {
         printf("Impossible de charger '%s'\n", choix_nom);
     }
+    return lab;
 }
 
 
 void menu(void) {
     int choix = 0;
     Labyrinthe *lab = NULL;
+
     do {
         printf("\n=== MENU PRINCIPAL ===\n");
         printf("1. Créer un labyrinthe\n");
@@ -60,10 +62,10 @@ void menu(void) {
         printf("Choix : ");
 
         
-            while (scanf("%d", &choix) != 1){
-                while((choix = getchar()) != '\n');
-                printf("\nBad input, please enter a valid number: ");
-            }
+        while (scanf("%d", &choix) != 1){
+            while((choix = getchar()) != '\n');
+            printf("\nMauvaise saisie, entrer un choix valide: ");
+        }
 
         switch (choix) {
             case 1:
@@ -72,15 +74,16 @@ void menu(void) {
                 if(lab){
                     sauvegarder_labyrinthe(lab);
                     afficher_labyrinthe(lab);
-                    liberer_labyrinthe(lab);
                 }
                 break;
             case 2:
                 liste_labyrinthes();
-                choose_lab();
+                if(lab == NULL)
+                    lab = choose_lab();
+                liberer_labyrinthe(lab);
                 break;
             case 3:
-                // jouer_menu();
+                
                 break;
             case 4:
                 printf("Au revoir !\n");

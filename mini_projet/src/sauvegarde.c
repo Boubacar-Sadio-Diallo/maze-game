@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../headers/labyrinthe.h"
+#include "../include/labyrinthe.h"
 
 
 /**
@@ -30,6 +30,9 @@ void sauvegarder_labyrinthe(Labyrinthe *lab) {
             if (val == -1) fprintf(f, "#");
             else if (val == -2) fprintf(f, "o");
             else if (val == -3) fprintf(f, "_");
+            else if (val == CLE) fprintf(f, "k");
+            else if (val == BONUS) fprintf(f, "b");
+            else if (val == MALUS) fprintf(f, "m");
             else fprintf(f, " ");
         }
         fprintf(f, "\n");
@@ -69,6 +72,9 @@ Labyrinthe *charger_labyrinthe(const char *nom) {
             if (c == '#') lab->array[i][j++] = -1;
             else if (c == 'o') lab->array[i][j++] = -2;
             else if (c == '_') lab->array[i][j++] = -3;
+            else if (c == 'k') lab->array[i][j++] = -4;
+            else if (c == 'b') lab->array[i][j++] = -5;
+            else if (c == 'm') lab->array[i][j++] = -6;
             else if (c == ' ' || c == '0') lab->array[i][j++] = 0;
             else continue;
         }

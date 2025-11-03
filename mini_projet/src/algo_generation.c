@@ -1,8 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-#include "../headers/labyrinthe.h"
-
+#include <stdlib.h> 
+#include "../include/labyrinthe.h"
 
 /**
  * @brief 
@@ -55,6 +52,54 @@ void associe_valeur_cellule(Labyrinthe *lab) {
             lab->array[i][j] = num++;
         }
     }
+}
+#include "../include/generation.h"
+#include <stdlib.h> // Pour rand()
+
+/**
+ * @brief Tente de placer N objets d'un certain type sur des cases vides (code 0).
+ */
+void placer_un_type_objet(Labyrinthe *lab, int nb_objets, int code_objet) {
+    int objets_places = 0;
+    
+    // Pour éviter une boucle infinie si le lab est plein, on limite les essais.
+    int tentatives_max = (lab->hauteur * lab->largeur) * 2; 
+    int tentatives = 0;
+
+    while (objets_places < nb_objets && tentatives < tentatives_max) {
+        // 1. Choisir des coordonnées aléatoires
+        unsigned int x = rand() % lab->hauteur;
+        unsigned int y = rand() % lab->largeur;
+
+        // 2. Vérifier si la case est un chemin vide (code 0)
+        // On vérifie aussi qu'on n'est pas sur l'entrée ou la sortie !
+        if (lab->array[x][y] == 0) {
+            // 3. Placer l'objet
+            lab->array[x][y] = code_objet;
+            objets_places++;
+        }
+        
+        tentatives++;
+    }
+}
+
+/**
+ * @brief Place la clé, les bonus et les malus dans le labyrinthe.
+ *
+ */
+void placer_objets(Labyrinthe *lab) {
+    int nb_cles = NB_CLES;
+    int nb_bonus = NB_BONUS; 
+    int nb_malus = NB_MALUS;
+
+    // Placer la clé
+    placer_un_type_objet(lab, nb_cles, CLE);
+    
+    // Placer les bonus
+    placer_un_type_objet(lab, nb_bonus, BONUS);
+
+    // Placer les malus
+    placer_un_type_objet(lab, nb_malus, MALUS);
 }
 
 void generer_labyrinthe(Labyrinthe *lab) {
@@ -113,5 +158,7 @@ void generer_labyrinthe(Labyrinthe *lab) {
         }
     }
 
+    //et on place les objets
+    placer_objets(lab);
     free(sets);
 }

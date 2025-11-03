@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../headers/labyrinthe.h"
+#include "../include/labyrinthe.h"
+
 
 /**
  * @brief 
@@ -26,7 +27,13 @@ Labyrinthe *creer_labyrinthe(unsigned hauteur, unsigned largeur, const char *nom
     lab->hauteur = hauteur;
     lab->largeur = largeur;
     lab->taille = hauteur * largeur;
-    lab->nom = strdup(nom);
+    // lab->nom = malloc(sizeof(char)*strlen(nom));
+    // strcpy(lab->nom, nom);
+    // Correction de l'allocation
+    lab->nom = malloc(strlen(nom) + 1); 
+    if (lab->nom) {
+        strcpy(lab->nom, nom);
+    }
 
     lab->array = malloc(hauteur * sizeof(int *));
 
@@ -93,6 +100,7 @@ Labyrinthe *init_lab(void) {
  * @param nom 
  */
     ajouter_index(lab->nom);
+
     printf("\nLabyrinthe '%s' créé avec succès (%ux%u)\n", lab->nom, lab->hauteur, lab->largeur);
 
     return lab;
@@ -103,13 +111,31 @@ Labyrinthe *init_lab(void) {
  * 
  * @param lab 
  */
-void afficher_labyrinthe(Labyrinthe *lab) {
+#include <stdio.h>
+#include "../include/labyrinthe.h"
+#include "../include/generation.h" // Pour les codes CLE, BONUS, MALUS
+
+/**
+ * @brief Affiche le labyrinthe complet, y compris le joueur.
+ * * @param lab Le labyrinthe à afficher.
+ * @param player_x Position X du joueur.
+ * @param player_y Position Y du joueur.
+ */
+void afficher_labyrinthe(Labyrinthe *lab, unsigned player_x, unsigned player_y) {
+    
     for (unsigned int i = 0; i < lab->hauteur; i++) {
         for (unsigned int j = 0; j < lab->largeur; j++) {
-            if (lab->array[i][j] == -1) printf("#");
-            else if (lab->array[i][j] == -2) printf("o");
-            else if (lab->array[i][j] == -3) printf("_");
-            else printf(" "); // cellule ouverte
+
+            if (i == player_x && j == player_y) {
+                printf("P"); // 'P' pour Player
+            }
+            else if (lab->array[i][j] == -1)    printf("#"); // Mur
+            else if (lab->array[i][j] == -2)    printf("o"); // Entrée
+            else if (lab->array[i][j] == -3)    printf("_"); // Sortie
+            else if (lab->array[i][j] == CLE)   printf("k"); // Clé
+            else if (lab->array[i][j] == BONUS) printf("b"); // Bonus
+            else if (lab->array[i][j] == MALUS) printf("m"); // Malus
+            else                                printf(" "); // Chemin vide
         }
         printf("\n");
     }
@@ -118,7 +144,7 @@ void afficher_labyrinthe(Labyrinthe *lab) {
 
 
 /**
- *@brief libère la memoire alloué à la créa tion du labyrinthe
+ *@brief libère la memoire alloué à la création du labyrinthe
  *@param m description hauteur impaire
  *@param n largeur impaire
  *@return retourne un labyrinthe
@@ -135,4 +161,3 @@ void liberer_labyrinthe(Labyrinthe *labyrinthe) {
 
     free(labyrinthe);
 }
-

@@ -1,6 +1,13 @@
 #include <stdio.h>
+#ifndef LABYRINTHE_H
+#define LABYRINTHE_H
 
-
+#define CLE -4
+#define BONUS -5
+#define MALUS -6
+#define NB_CLES 1;
+#define NB_BONUS 3; 
+#define NB_MALUS 3;
 /**
 *Structure representant un labyrinthe
 */
@@ -78,3 +85,7 @@ Labyrinthe *charger_labyrinthe(const char *filename);
  * @param lab 
  */
 void nettoyer_labyrinthe(Labyrinthe * lab);
+
+
+#endif
+

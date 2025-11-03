@@ -1,4 +1,5 @@
-
+#ifndef SAUVEGARDE_H
+#define SAUVEGARDE_H
 /**
  * @brief 
  * 
@@ -14,4 +15,6 @@ void sauvegarder_labyrinthe(Labyrinthe *lab);
  * @return Labyrinthe* 
  */
 Labyrinthe *charger_labyrinthe(const char *nom);
+
+#endif
 

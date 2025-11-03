@@ -1,12 +1,10 @@
-// #include "labyrinthe.h"
-
-
-
+#ifndef GENERATION_H
+#define GENERATION_H
 /**
  *@brief l'implémentation de l'algorithme de génération de labyrinthe
  *
  */
-Labyrinthe * generer_labyrinthe(Labyrinthe * lab);
+void generer_labyrinthe(Labyrinthe * lab);
 
 /**
  * @brief fait l'union de cellules
@@ -53,3 +51,12 @@ void melanger_murs(Cellule * murs, int n);
  */
 void fusionner_identifiants_labyrinthe(Labyrinthe *lab, int ancien_id, int nouvel_id);
 
+
+/**
+ * @brief  @brief Place la clé, les bonus et les malus dans le labyrinthe.
+ *
+ * 
+ */
+void placer_objets(Labyrinthe *lab);
+
+#endif

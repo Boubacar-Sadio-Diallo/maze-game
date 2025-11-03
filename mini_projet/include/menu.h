@@ -1,4 +1,8 @@
-#include "../headers/labyrinthe.h"
+#ifndef MENU_H
+#define MENU_H
+
+#include "../include/labyrinthe.h"
+#include "../include/jeu.h"
 
 /**
  *@brief Meu du jeu
@@ -18,3 +22,5 @@ Labyrinthe *choose_lab(void);
  * 
  */
 void liste_labyrinthes(void);
+
+#endif

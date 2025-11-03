@@ -2,9 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 // #include "../headers/labyrinthe.h"
-#include "../headers/affichage.h"
-#include "../headers/generation.h"
-#include "../headers/sauvegarde.h"
+#include "../include/affichage.h"
+#include "../include/generation.h"
+#include "../include/sauvegarde.h"
+#include "../include/jeu.h"
+
 
 /**
  * @brief 
@@ -24,10 +26,11 @@ void liste_labyrinthes(void) {
         nom[strcspn(nom, "\n")] = '\0'; // enlever le \n
         printf("%d. %s\n", i, nom);
         Labyrinthe *lab = charger_labyrinthe(nom);
-        afficher_labyrinthe(lab);
+        afficher_labyrinthe(lab, (unsigned int)-1, (unsigned int)-1);
         i++;
     }
-
+    
+    fclose(f);
 }
 /**
  * @brief Construct a new choose lab object
@@ -40,8 +43,9 @@ Labyrinthe *choose_lab(void){
 
     Labyrinthe *lab = charger_labyrinthe(choix_nom);
     if (lab) {
-        afficher_labyrinthe(lab);
+        afficher_labyrinthe(lab, (unsigned int)-1, (unsigned int)-1);
         // liberer_labyrinthe(lab);
+        // free(lab);
     } else {
         printf("Impossible de charger '%s'\n", choix_nom);
     }
@@ -73,23 +77,35 @@ void menu(void) {
                 generer_labyrinthe(lab);
                 if(lab){
                     sauvegarder_labyrinthe(lab);
-                    afficher_labyrinthe(lab);
+                    afficher_labyrinthe(lab, (unsigned int)-1, (unsigned int)-1);
                 }
                 break;
             case 2:
                 liste_labyrinthes();
-                if(lab == NULL)
-                    lab = choose_lab();
-                liberer_labyrinthe(lab);
+                if(lab){
+                    liberer_labyrinthe(lab);
+                    // free(lab);
+                }
+                lab = choose_lab();
                 break;
             case 3:
-                
-                break;
-            case 4:
-                printf("Au revoir !\n");
+                if(lab == NULL) {
+                    printf(" Aucun labyrinthe chargé ! Veuillez en charger un d'abord.\n");
+                } else {
+                    jouer(lab); // Fonction qui permet de jouer
+                    liberer_labyrinthe(lab);
+                    // free(lab);
+                }
                 break;
             default:
                 printf("Choix invalide !\n");
         }
     } while (choix != 4);
+
+
+    if(lab) {
+        liberer_labyrinthe(lab);
+        //free(lab);
+
+    }
 }

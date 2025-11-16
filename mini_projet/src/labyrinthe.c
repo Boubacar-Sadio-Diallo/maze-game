@@ -4,32 +4,16 @@
 #include "../include/labyrinthe.h"
 
 
-/**
- * @brief 
- * 
- * @param nom 
- */
-void ajouter_index(const char *nom) {
-    FILE *f = fopen("data/index.txt", "a"); // 'a' pour ajouter à la fin
-    if (!f) return;
-    fprintf(f, "%s\n", nom);
-    fclose(f);
-}
 
 /* Créer un labyrinthe vide rempli de murs */
 Labyrinthe *creer_labyrinthe(unsigned hauteur, unsigned largeur, const char *nom) {
     Labyrinthe *lab = malloc(sizeof(Labyrinthe));
-    //Labyrinthe *lab = info_lab();
     if (!lab) return NULL;
 
-    // lab->in = 'O';
-    // lab->out = '_';
     lab->hauteur = hauteur;
     lab->largeur = largeur;
     lab->taille = hauteur * largeur;
-    // lab->nom = malloc(sizeof(char)*strlen(nom));
-    // strcpy(lab->nom, nom);
-    // Correction de l'allocation
+   
     lab->nom = malloc(strlen(nom) + 1); 
     if (lab->nom) {
         strcpy(lab->nom, nom);
@@ -58,8 +42,6 @@ Labyrinthe *creer_labyrinthe(unsigned hauteur, unsigned largeur, const char *nom
     // Entrée et sortie
     lab->array[0][1] = -2; // entrée
     lab->array[hauteur - 1][largeur - 2] = -3; // sortie
-
-
     return lab;
 }
 
@@ -69,15 +51,15 @@ Labyrinthe *init_lab(void) {
     unsigned largeur;
     char nom[100];
 
-    printf("Entrer la hauteur du labyrinthe (impair) : ");
-    while (scanf("%u", &hauteur) != 1 || hauteur % 2 == 0) {
-        printf("Hauteur invalide (doit être un nombre impair). Reessayez : ");
+   printf("Entrer la hauteur du labyrinthe (impair, min 3) : ");
+    while (scanf("%u", &hauteur) != 1 || hauteur % 2 == 0 || hauteur < 3) {
+        printf("Hauteur invalide (doit être impaire et >= 3). Reessayez : ");
         while (getchar() != '\n');
     }
 
-    printf("Entrer la largeur du labyrinthe (impair) : ");
-    while (scanf("%u", &largeur) != 1 || largeur % 2 == 0) {
-        printf("Largeur invalide (doit être un nombre impair). Reessayez : ");
+    printf("Entrer la largeur du labyrinthe (impair, min 3) : ");
+    while (scanf("%u", &largeur) != 1 || largeur % 2 == 0 || largeur < 3) {
+        printf("Largeur invalide (doit être impaire et >= 3). Reessayez : ");
         while (getchar() != '\n');
     }
 
@@ -87,33 +69,11 @@ Labyrinthe *init_lab(void) {
     nom[strcspn(nom, "\n")] = '\0'; // retire le \n
     Labyrinthe *lab = creer_labyrinthe(hauteur, largeur, nom);
 
-    // Labyrinthe *lab = malloc(sizeof(Labyrinthe));
-    // if (!lab) return NULL;
-
-    // lab->hauteur = hauteur;
-    // lab->largeur = largeur;
-    // lab->taille = hauteur * largeur;
-    // lab->nom = strdup(nom);
-    /**
- * @brief 
- * 
- * @param nom 
- */
-    ajouter_index(lab->nom);
-
     printf("\nLabyrinthe '%s' créé avec succès (%ux%u)\n", lab->nom, lab->hauteur, lab->largeur);
 
     return lab;
 }
 
-/**
- * @brief 
- * 
- * @param lab 
- */
-#include <stdio.h>
-#include "../include/labyrinthe.h"
-#include "../include/generation.h" // Pour les codes CLE, BONUS, MALUS
 
 /**
  * @brief Affiche le labyrinthe complet, y compris le joueur.
@@ -144,7 +104,7 @@ void afficher_labyrinthe(Labyrinthe *lab, unsigned player_x, unsigned player_y) 
 
 
 /**
- *@brief libère la memoire alloué à la création du labyrinthe
+ *@brief libère la memoire allouée à la création du labyrinthe
  *@param m description hauteur impaire
  *@param n largeur impaire
  *@return retourne un labyrinthe
@@ -158,6 +118,12 @@ void liberer_labyrinthe(Labyrinthe *labyrinthe) {
         }
         free(labyrinthe->array);
     }
+
+  
+    if (labyrinthe->nom) {
+        free(labyrinthe->nom);
+    }
+
 
     free(labyrinthe);
 }

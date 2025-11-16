@@ -9,3 +9,12 @@ moiettoi
 az
 malus
 bonus
+a
+gros
+bas
+bas
+ddd
+biggest
+most bigger
+3*3
+13

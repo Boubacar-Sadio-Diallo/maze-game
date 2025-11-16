@@ -2,29 +2,18 @@
 #include <stdlib.h>
 /**
  * @file player.c
- * @author your name (you@domain.com)
+ * @author DIALLO Boubacar Sadio
  * @brief 
  * @version 0.1
  * @date 2025-10-15
- *
  * @copyright Copyright (c) 2025
- *
  */
-// int deplacer_joueur(Labyrinthe *lab, unsigned *x, unsigned *y, unsigned nx, unsigned ny) {
-//     if (lab->array[nx][ny] == -1) {
-//         printf(" Mur !\n");
-//         return 0;
-//     }
-//     *x = nx;
-//     *y = ny;
-//     return 1;
-// }
+
 /**
- * @brief 
- * 
- * @param x 
- * @param y 
- * @return Player* 
+ * @brief alloue la mémoire et initialise un nouveau joueur.
+ * @param x  la position de départ en X.
+ * @param y la position de départ en Y.
+ * @return un pointeur vers le joueur alloué, ou NULL en cas d'erreur
  */
 Player *creerJoueur(unsigned x, unsigned y){
   Player *player = malloc(sizeof(Player));
@@ -32,7 +21,7 @@ Player *creerJoueur(unsigned x, unsigned y){
   player->position.x = x;
   player->position.y = y;
   player->score = 0;
-  player->nom = NULL;
+  // player->nom = NULL;
   player->has_key = 0;
   player->moves = 0;
 
@@ -40,22 +29,11 @@ Player *creerJoueur(unsigned x, unsigned y){
 }
 
 /**
- * @brief 
- * 
- * @param player 
+ * @brief libère la mémoire allouée pour un joueur.
+ * @param player Pointeur vers le joueur à libérer.
  */
-void libererJoueur(Player *player) {
+void libererJoueur(Player *player){
     if (player != NULL) {
-        // Si vous allouez 'nom' plus tard, libérez-le aussi :
-        // if (player->nom != NULL) {
-        //     free(player->nom);
-        // }
-        free(player); // Libère la structure joueur elle-même
+        free(player);
     }
 }
-/**
-  * @brief
-  *
-  */
-void score(void);
-

@@ -1,0 +1,46 @@
+\doxysection{labyrinthe.\+h}
+\hypertarget{labyrinthe_8h_source}{}\label{labyrinthe_8h_source}\index{include/labyrinthe.h@{include/labyrinthe.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#ifndef\ LABYRINTHE\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ LABYRINTHE\_H}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ CLE\ -\/4\ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ BONUS\ -\/5\ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ MALUS\ -\/6\ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ NB\_CLES\ 1\ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00014\ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structlabyrinthe}{labyrinthe}}\{}
+\DoxyCodeLine{00015\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ hauteur,\ \mbox{\hyperlink{structlabyrinthe_a4924085398b9c6c14180a08b09935a04}{largeur}};\ }
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structlabyrinthe_aec1c61cec7c5f2b8c32928e61eed3f70}{taille}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{keywordtype}{char}\ *\ \mbox{\hyperlink{structlabyrinthe_acaaf91958298fa88a5a8f416865abb9f}{nom}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{int}\ **\ \mbox{\hyperlink{structlabyrinthe_a3591f2122b5dd310e81340125a9137a9}{array}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00019\ \}\ ;}
+\DoxyCodeLine{00020\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structlabyrinthe}{labyrinthe}}\ Labyrinthe;}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcellule}{cellule}}\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ x,\ \mbox{\hyperlink{structcellule_a32c3e1949eb718ba8811c22229b1f34e}{y}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ cell1\_x,\ \mbox{\hyperlink{structcellule_a9f32f4449344a2957a3b904435e4eda7}{cell1\_y}};\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ cell2\_x,\ \mbox{\hyperlink{structcellule_a8892f51c5eff26c18aa3fdad0e533483}{cell2\_y}};\ }
+\DoxyCodeLine{00031\ \};}
+\DoxyCodeLine{00032\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcellule}{cellule}}\ Cellule;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00043\ Labyrinthe\ *init\_lab(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00056\ Labyrinthe\ *creer\_labyrinthe(\textcolor{keywordtype}{unsigned}\ hauteur,\ \textcolor{keywordtype}{unsigned}\ largeur,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *nom);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00067\ \textcolor{keywordtype}{int}\ enregistrer\_labyrinthe(Labyrinthe\ *\ lab);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00078\ \textcolor{keywordtype}{void}\ liberer\_labyrinthe(Labyrinthe\ *\mbox{\hyperlink{structlabyrinthe}{labyrinthe}});}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00095\ Labyrinthe\ *charger\_labyrinthe(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *filename);}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00098\ }
+
+\end{DoxyCode}

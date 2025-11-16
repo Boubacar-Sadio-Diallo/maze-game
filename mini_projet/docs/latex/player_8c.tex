@@ -1,0 +1,66 @@
+\doxysection{Référence du fichier src/player.c}
+\hypertarget{player_8c}{}\label{player_8c}\index{src/player.c@{src/player.c}}
+{\ttfamily \#include "{}player.\+h"{}}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+Player \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{player_8c_afc93dad7ba8864fee8ffff0422d32034}{creer\+Joueur}} (unsigned x, unsigned y)
+\begin{DoxyCompactList}\small\item\em alloue la mémoire et initialise un nouveau joueur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player_8c_ae7efb9bad80eedac8a37a7ca9da10178}{liberer\+Joueur}} (Player \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structplayer}{player}})
+\begin{DoxyCompactList}\small\item\em libère la mémoire allouée pour un joueur. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+\begin{DoxyAuthor}{Auteur}
+DIALLO Boubacar Sadio 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2025-\/10-\/15 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2025 
+\end{DoxyCopyright}
+
+
+\label{doc-func-members}
+\Hypertarget{player_8c_doc-func-members}
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{player_8c_afc93dad7ba8864fee8ffff0422d32034}\index{player.c@{player.c}!creerJoueur@{creerJoueur}}
+\index{creerJoueur@{creerJoueur}!player.c@{player.c}}
+\doxysubsubsection{\texorpdfstring{creerJoueur()}{creerJoueur()}}
+{\footnotesize\ttfamily \label{player_8c_afc93dad7ba8864fee8ffff0422d32034} 
+Player \texorpdfstring{$\ast$}{*} creer\+Joueur (\begin{DoxyParamCaption}\item[{unsigned}]{x}{, }\item[{unsigned}]{y}{}\end{DoxyParamCaption})}
+
+
+
+alloue la mémoire et initialise un nouveau joueur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em x} & la position de départ en X. \\
+\hline
+{\em y} & la position de départ en Y. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+un pointeur vers le joueur alloué, ou NULL en cas d\textquotesingle{}erreur 
+\end{DoxyReturn}
+\Hypertarget{player_8c_ae7efb9bad80eedac8a37a7ca9da10178}\index{player.c@{player.c}!libererJoueur@{libererJoueur}}
+\index{libererJoueur@{libererJoueur}!player.c@{player.c}}
+\doxysubsubsection{\texorpdfstring{libererJoueur()}{libererJoueur()}}
+{\footnotesize\ttfamily \label{player_8c_ae7efb9bad80eedac8a37a7ca9da10178} 
+void liberer\+Joueur (\begin{DoxyParamCaption}\item[{Player \texorpdfstring{$\ast$}{*}}]{player}{}\end{DoxyParamCaption})}
+
+
+
+libère la mémoire allouée pour un joueur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em player} & Pointeur vers le joueur à libérer. \\
+\hline
+\end{DoxyParams}

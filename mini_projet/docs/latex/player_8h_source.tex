@@ -1,0 +1,29 @@
+\doxysection{player.\+h}
+\hypertarget{player_8h_source}{}\label{player_8h_source}\index{include/player.h@{include/player.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}labyrinthe.h"{}}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#ifndef\ PLAYER\_H}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#define\ PLAYER\_H}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00010\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ x;}
+\DoxyCodeLine{00011\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ y;}
+\DoxyCodeLine{00012\ \}\ \mbox{\hyperlink{struct_position}{Position}};}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structplayer}{player}}\{}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{struct_position}{Position}}\ \mbox{\hyperlink{structplayer_a1d1f3f7c1b08cf7b359cec5225ea79c9}{position}};\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{structplayer_aae006b871accd2a0b010783a8f56e9de}{score}};\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \mbox{\hyperlink{structplayer_a8fa0f7b709ba23cefc7f6a220466c6ee}{moves}};\ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structplayer_a7f91b47ff23313f9cc5524d5eb0169dc}{has\_key}};\ }
+\DoxyCodeLine{00023\ \};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structplayer}{player}}\ Player;}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00033\ Player\ *\mbox{\hyperlink{player_8c_afc93dad7ba8864fee8ffff0422d32034}{creerJoueur}}(\textcolor{keywordtype}{unsigned}\ x,\ \textcolor{keywordtype}{unsigned}\ y);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00039\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{player_8c_ae7efb9bad80eedac8a37a7ca9da10178}{libererJoueur}}(Player\ *\mbox{\hyperlink{structplayer}{player}});}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,62 @@
+\doxysection{Référence de la structure labyrinthe}
+\hypertarget{structlabyrinthe}{}\label{structlabyrinthe}\index{labyrinthe@{labyrinthe}}
+
+
+Structure principale contenant la grille et les métadonnées du labyrinthe.  
+
+
+
+
+{\ttfamily \#include $<$labyrinthe.\+h$>$}
+
+\doxysubsubsection*{Champs de données}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{structlabyrinthe_ac2dc8c766f59c2d314c9e51a980d8884}\label{structlabyrinthe_ac2dc8c766f59c2d314c9e51a980d8884} 
+unsigned int {\bfseries hauteur}
+\item 
+unsigned int \mbox{\hyperlink{structlabyrinthe_a4924085398b9c6c14180a08b09935a04}{largeur}}
+\item 
+unsigned int \mbox{\hyperlink{structlabyrinthe_aec1c61cec7c5f2b8c32928e61eed3f70}{taille}}
+\item 
+char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structlabyrinthe_acaaf91958298fa88a5a8f416865abb9f}{nom}}
+\item 
+int \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structlabyrinthe_a3591f2122b5dd310e81340125a9137a9}{array}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Structure principale contenant la grille et les métadonnées du labyrinthe. 
+
+\label{doc-variable-members}
+\Hypertarget{structlabyrinthe_doc-variable-members}
+\doxysubsection{Documentation des champs}
+\Hypertarget{structlabyrinthe_a3591f2122b5dd310e81340125a9137a9}\index{labyrinthe@{labyrinthe}!array@{array}}
+\index{array@{array}!labyrinthe@{labyrinthe}}
+\doxysubsubsection{\texorpdfstring{array}{array}}
+{\footnotesize\ttfamily \label{structlabyrinthe_a3591f2122b5dd310e81340125a9137a9} 
+int\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} labyrinthe\+::array}
+
+Grille 2D des cases (mur, chemin, objet...). \Hypertarget{structlabyrinthe_a4924085398b9c6c14180a08b09935a04}\index{labyrinthe@{labyrinthe}!largeur@{largeur}}
+\index{largeur@{largeur}!labyrinthe@{labyrinthe}}
+\doxysubsubsection{\texorpdfstring{largeur}{largeur}}
+{\footnotesize\ttfamily \label{structlabyrinthe_a4924085398b9c6c14180a08b09935a04} 
+unsigned int labyrinthe\+::largeur}
+
+Dimensions de la grille. \Hypertarget{structlabyrinthe_acaaf91958298fa88a5a8f416865abb9f}\index{labyrinthe@{labyrinthe}!nom@{nom}}
+\index{nom@{nom}!labyrinthe@{labyrinthe}}
+\doxysubsubsection{\texorpdfstring{nom}{nom}}
+{\footnotesize\ttfamily \label{structlabyrinthe_acaaf91958298fa88a5a8f416865abb9f} 
+char\texorpdfstring{$\ast$}{*} labyrinthe\+::nom}
+
+Nom du labyrinthe (pour sauvegarde/chargement). \Hypertarget{structlabyrinthe_aec1c61cec7c5f2b8c32928e61eed3f70}\index{labyrinthe@{labyrinthe}!taille@{taille}}
+\index{taille@{taille}!labyrinthe@{labyrinthe}}
+\doxysubsubsection{\texorpdfstring{taille}{taille}}
+{\footnotesize\ttfamily \label{structlabyrinthe_aec1c61cec7c5f2b8c32928e61eed3f70} 
+unsigned int labyrinthe\+::taille}
+
+Taille totale (hauteur \texorpdfstring{$\ast$}{*} largeur). 
+
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+include/labyrinthe.\+h\end{DoxyCompactItemize}

@@ -1,15 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../include/labyrinthe.h" // Inclus labyrinthe.h
+#include "../include/labyrinthe.h" 
 #include "../include/affichage.h"
-#include "../include/generation.h" // Pour les codes objets (CLE, BONUS...)
-#include "../include/sauvegarde.h"
+#include "../include/generation.h" 
 #include "../include/jeu.h"
-#include "../include/player.h"     // <-- IMPORTANT : Inclure joueur.h
+#include "../include/player.h"    
+#include "../include/score.h"    
 
-// --- Constantes du jeu ---
-#define POINTS_BONUS 50
-#define POINTS_MALUS -25
+
 
 // --- Fonctions de déplacement (inchangées) ---
 
@@ -26,7 +24,7 @@ void deplacement_suivant(char dir, unsigned *nx, unsigned *ny) {
 int verifier_limites(Labyrinthe *lab, unsigned x, unsigned y) {
     // Vérifie les limites du tableau
     if (x >= lab->hauteur || y >= lab->largeur) {
-        return 0; // Hors limites (note: x < 0 est inutile si x est 'unsigned')
+        return 0; // 
     }
     return 1;
 }
@@ -37,18 +35,17 @@ int verifier_sortie(Labyrinthe *lab, unsigned x, unsigned y) {
 }
 
 
-// --- NOUVELLE LOGIQUE DE DÉPLACEMENT (On décommente) ---
 
 /**
- * @brief Tente de déplacer le joueur vers (nx, ny) et gère les interactions.
+ * @brief Tente de déplacer le joueur vers (nx, ny) et gère les intéractions.
  * @return 1 si le joueur a bougé, 0 sinon.
  */
 int tenter_deplacement(Labyrinthe *lab, Player *joueur, unsigned nx, unsigned ny) {
     
-    // 1. Vérifier les limites (appel à verifier_limites)
+    // 1. Vérifier les limites
     if (!verifier_limites(lab, nx, ny)) {
         printf(" Hors du labyrinthe !\n");
-        return 0; // Le joueur ne bouge pas
+        return 0; 
     }
 
     // 2. Analyser la case de destination
@@ -67,8 +64,7 @@ int tenter_deplacement(Labyrinthe *lab, Player *joueur, unsigned nx, unsigned ny
                 printf("La porte est verrouillée ! Trouvez la clé (k).\n");
                 return 0; // Le joueur ne bouge pas
             }
-            break; // Le joueur va bouger
-
+            break; 
         case CLE: // Clé (utilise la constante)
             printf("Vous avez trouvé la clé !\n");
             joueur->has_key = 1;
@@ -88,10 +84,9 @@ int tenter_deplacement(Labyrinthe *lab, Player *joueur, unsigned nx, unsigned ny
             break; // Le joueur va bouger
 
         case 0:  // Chemin vide
-        case -2: // Entrée (on peut revenir dessus)
+        case -2: // Entrée
         default:
-            // C'est un chemin, on ne fait rien de spécial
-            break; // Le joueur va bouger
+            break;
     }
 
     // 3. Mettre à jour la position et les stats du joueur
@@ -99,11 +94,11 @@ int tenter_deplacement(Labyrinthe *lab, Player *joueur, unsigned nx, unsigned ny
     joueur->position.y = ny;
     joueur->moves++; // On incrémente les coups SEULEMENT si le déplacement est réussi
     
-    return 1; // Le joueur a bougé
+    return 1; 
 }
 
 
-// --- FONCTION JOUER (Entièrement réorganisée) ---
+
 
 /**
  *@brief Démarrer le jeu
@@ -112,10 +107,10 @@ void jouer(Labyrinthe *lab) {
     
     Player *joueur = creerJoueur(0, 1); // Position d'entrée (0, 1)
     if (joueur == NULL) {
-        printf("Erreur critique: impossible de créer le joueur.\n");
+        printf("Impossible de créer le joueur.\n");
         return;
     }
-    // Initialiser les stats (devrait être fait dans creerJoueur)
+    // Initialiser les stats
     joueur->score = 0;
     joueur->moves = 0;
     joueur->has_key = 0;
@@ -133,10 +128,13 @@ void jouer(Labyrinthe *lab) {
         printf("========================================\n");
 
         // C. Afficher le labyrinthe avec le joueur
-        // (En supposant que vous avez mis à jour afficher_labyrinthe)
         afficher_labyrinthe(lab, joueur->position.x, joueur->position.y);
         printf("\nDéplacement (z=haut, s=bas, q=gauche, d=droite, x=quitter) : ");
-        scanf(" %c", &dir);
+        while (scanf(" %c", &dir) != 1) {
+        printf("position invalide\n");
+        while (getchar() != '\n');
+    }
+        
 
         if (dir == 'x') {
             printf("Vous quittez la partie.\n");
@@ -157,13 +155,13 @@ void jouer(Labyrinthe *lab) {
             printf("\n🎉 Bravo, vous avez terminé le labyrinthe ! 🎉\n");
             printf("Score: %d, Coups: %d\n", joueur->score, joueur->moves);
 
-            // Appeler la gestion des scores
-            // gerer_highscore(lab, joueur); // (À décommenter quand ce sera prêt)
-            
+            // J'Appelle la gestion des scores
+            gerer_highscore(lab, joueur);
             break; // Sort de la boucle
         }
     }
 
     // 3. LIBÉRER LE JOUEUR (APRÈS la boucle)
-    libererJoueur(joueur); 
+    libererJoueur(joueur);
+    joueur = NULL;
 }

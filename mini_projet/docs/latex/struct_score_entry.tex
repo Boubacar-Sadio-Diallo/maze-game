@@ -1,0 +1,51 @@
+\doxysection{Référence de la structure Score\+Entry}
+\hypertarget{struct_score_entry}{}\label{struct_score_entry}\index{ScoreEntry@{ScoreEntry}}
+
+
+Représente une seule ligne dans le tableau des meilleurs scores. Cette structure est utilisée à la fois pour stocker les scores en mémoire et pour les écrire/lire dans le fichier .score.  
+
+
+
+
+{\ttfamily \#include $<$score.\+h$>$}
+
+\doxysubsubsection*{Champs de données}
+\begin{DoxyCompactItemize}
+\item 
+char \mbox{\hyperlink{struct_score_entry_a7350293c65303456d9403b7729123015}{nom}} \mbox{[}50\mbox{]}
+\item 
+int \mbox{\hyperlink{struct_score_entry_a5a264456436213bc2b325abd868e74b6}{score\+\_\+final}}
+\item 
+int \mbox{\hyperlink{struct_score_entry_a3d70f07f97469b544788ae209349a640}{moves}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Représente une seule ligne dans le tableau des meilleurs scores. Cette structure est utilisée à la fois pour stocker les scores en mémoire et pour les écrire/lire dans le fichier .score. 
+
+\label{doc-variable-members}
+\Hypertarget{struct_score_entry_doc-variable-members}
+\doxysubsection{Documentation des champs}
+\Hypertarget{struct_score_entry_a3d70f07f97469b544788ae209349a640}\index{ScoreEntry@{ScoreEntry}!moves@{moves}}
+\index{moves@{moves}!ScoreEntry@{ScoreEntry}}
+\doxysubsubsection{\texorpdfstring{moves}{moves}}
+{\footnotesize\ttfamily \label{struct_score_entry_a3d70f07f97469b544788ae209349a640} 
+int Score\+Entry\+::moves}
+
+Le nombre de déplacements total pour cette partie. \Hypertarget{struct_score_entry_a7350293c65303456d9403b7729123015}\index{ScoreEntry@{ScoreEntry}!nom@{nom}}
+\index{nom@{nom}!ScoreEntry@{ScoreEntry}}
+\doxysubsubsection{\texorpdfstring{nom}{nom}}
+{\footnotesize\ttfamily \label{struct_score_entry_a7350293c65303456d9403b7729123015} 
+char Score\+Entry\+::nom\mbox{[}50\mbox{]}}
+
+Le nom du joueur. \Hypertarget{struct_score_entry_a5a264456436213bc2b325abd868e74b6}\index{ScoreEntry@{ScoreEntry}!score\_final@{score\_final}}
+\index{score\_final@{score\_final}!ScoreEntry@{ScoreEntry}}
+\doxysubsubsection{\texorpdfstring{score\_final}{score\_final}}
+{\footnotesize\ttfamily \label{struct_score_entry_a5a264456436213bc2b325abd868e74b6} 
+int Score\+Entry\+::score\+\_\+final}
+
+Le score final calculé (score -\/ pénalités). 
+
+La documentation de cette structure a été générée à partir du fichier suivant \+:\begin{DoxyCompactItemize}
+\item 
+include/score.\+h\end{DoxyCompactItemize}

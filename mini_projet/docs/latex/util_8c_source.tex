@@ -1,0 +1,30 @@
+\doxysection{util.\+c}
+\hypertarget{util_8c_source}{}\label{util_8c_source}\index{src/util.c@{src/util.c}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ "{}../include/score.h"{}}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ charger\_scores(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *nom\_fichier,\ \mbox{\hyperlink{struct_score_entry}{ScoreEntry}}\ scores\_out[10])\ \{}
+\DoxyCodeLine{00018\ \ \ \ \ FILE\ *f\ =\ fopen(nom\_fichier,\ \textcolor{stringliteral}{"{}rb"{}});\ \textcolor{comment}{//\ "{}rb"{}\ =\ Read\ Binary}}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordflow}{if}\ (f\ ==\ NULL)\ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;\ \textcolor{comment}{//\ Pas\ de\ fichier,\ donc\ 0\ score}}
+\DoxyCodeLine{00021\ \ \ \ \ \}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ nb\_scores\_lus\ =\ fread(scores\_out,\ \textcolor{keyword}{sizeof}(\mbox{\hyperlink{struct_score_entry}{ScoreEntry}}),\ 10,\ f);}
+\DoxyCodeLine{00024\ \ \ \ \ fclose(f);}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordflow}{return}\ nb\_scores\_lus;}
+\DoxyCodeLine{00026\ \}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ comparateur\_scores(\textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *a,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{void}\ *b)\ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{struct_score_entry}{ScoreEntry}}\ *scoreA\ =\ (\mbox{\hyperlink{struct_score_entry}{ScoreEntry}}\ *)a;}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{struct_score_entry}{ScoreEntry}}\ *scoreB\ =\ (\mbox{\hyperlink{struct_score_entry}{ScoreEntry}}\ *)b;}
+\DoxyCodeLine{00040\ \ \ \ \ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ On\ trie\ du\ plus\ grand\ (B)\ au\ plus\ petit\ (A)}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordflow}{return}\ scoreB-\/>\mbox{\hyperlink{struct_score_entry_a5a264456436213bc2b325abd868e74b6}{score\_final}}\ -\/\ scoreA-\/>\mbox{\hyperlink{struct_score_entry_a5a264456436213bc2b325abd868e74b6}{score\_final}};}
+\DoxyCodeLine{00043\ \}}
+
+\end{DoxyCode}

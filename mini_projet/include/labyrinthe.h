@@ -2,90 +2,97 @@
 #ifndef LABYRINTHE_H
 #define LABYRINTHE_H
 
-#define CLE -4
-#define BONUS -5
-#define MALUS -6
-#define NB_CLES 1;
-#define NB_BONUS 3; 
-#define NB_MALUS 3;
+#define CLE -4 /**<@brief Le code entier représentant la clé dans la grille du labyrinthe. */
+#define BONUS -5 /**<@brief Le code entier représentant un trésor (bonus) dans la grille. */
+#define MALUS -6 /**<@brief Le code entier représentant un piège (malus) dans la grille. */
+#define NB_CLES 1 /**<@brief Le nombre de clés à placer dans le labyrinthe. */
+
 /**
-*Structure representant un labyrinthe
-*/
+ * @struct labyrinthe
+ * @brief Structure principale contenant la grille et les métadonnées du labyrinthe.
+ */
  struct labyrinthe{
-    unsigned int hauteur, largeur;
-    unsigned int taille;
-    // int in;
-    // int out;
-    char * nom;// nom de labyrinthe
-    int ** array;
+    unsigned int hauteur, largeur; /**< Dimensions de la grille. */
+    unsigned int taille;           /**< Taille totale (hauteur * largeur). */
+    char * nom;              /**< Nom du labyrinthe (pour sauvegarde/chargement). */
+    int ** array;                  /**< Grille 2D des cases (mur, chemin, objet...). */
 } ;
 typedef struct labyrinthe Labyrinthe;
 
 
+/**
+ * @struct cellule
+ * @brief Représente un mur potentiel lors de la génération du labyrinthe.
+ */
 struct cellule {
-    unsigned int x, y;           // Position du mur
-    unsigned int cell1_x, cell1_y; // Position première cellule
-    unsigned int cell2_x, cell2_y; // Position deuxième cellule
+    unsigned int x, y;           /**< Position (coordonnées) du mur. */
+    unsigned int cell1_x, cell1_y; /**< Coordonnées de la 1ère cellule adjacente. */
+    unsigned int cell2_x, cell2_y; /**< Coordonnées de la 2nde cellule adjacente. */
 };
 typedef struct cellule Cellule;
 
 /**
- * @brief 
- * 
- * @param nom 
- */
-void ajouter_index(const char *nom);
-
-/**
- * @brief 
- * 
+ * @brief Demande à l'utilisateur d'entrer les dimensions et le nom du labyrinthe.
+ *
+ * Cette fonction gère l'interaction en console pour récupérer la hauteur,
+ * la largeur (en vérifiant qu'elles sont impaires) et le nom.
+ * Elle appelle ensuite creer_labyrinthe() pour allouer la structure.
+ *
+ * @return Un pointeur vers le labyrinthe alloué, ou NULL en cas d'erreur.
  */
 Labyrinthe *init_lab(void);
 
 /**
- *@brief alloue et initialise le labyrinthe
- *@param m description hauteur impaire
- *@param n largeur impaire
- *@param nom represente le nom du jour
- *@return retourne un labyrinthe
+ * @brief Alloue la mémoire et initialise une structure Labyrinthe.
+ *
+ * Crée un labyrinthe vide (rempli de murs, code -1) avec les dimensions
+ * et le nom spécifiés. Place également l'entrée (-2) et la sortie (-3).
+ *
+ * @param hauteur La hauteur du labyrinthe (doit être impaire).
+ * @param largeur La largeur du labyrinthe (doit être impaire).
+ * @param nom Le nom du labyrinthe (utilisé pour la sauvegarde).
+ * @return Un pointeur vers le labyrinthe alloué, ou NULL en cas d'échec.
  */
 Labyrinthe *creer_labyrinthe(unsigned hauteur, unsigned largeur, const char *nom);
 
 /**
- * @brief enregistre le labyrinthe generé dans un fichier .cfg
- * @param lab désignele nom du labyrinthe
-
+ * @brief Enregistre le labyrinthe généré dans un fichier .cfg.
+ *
+ * Sauvegarde la structure actuelle du labyrinthe (dimensions, nom,
+ * et la grille) dans un fichier texte (ex: ./data/nom_du_lab.cfg).
+ *
+ * @param lab Pointeur vers le labyrinthe à enregistrer.
+ * @return 0 en cas de succès, -1 en cas d'erreur d'écriture.
  */
 int enregistrer_labyrinthe(Labyrinthe * lab);
 
 /**
- *@brief libère la memoire alloué à la créa tion du labyrinthe
- *@param m description hauteur impaire
- *@param n largeur impaire
- *@return retourne un labyrinthe
+ * @brief Libère toute la mémoire allouée pour un labyrinthe.
+ *
+ * Libère d'abord chaque ligne de la grille (labyrinthe->array[i]),
+ * puis la grille elle-même (labyrinthe->array),
+ * puis le nom (labyrinthe->nom), et enfin la structure Labyrinthe.
+ *
+ * @param labyrinthe Pointeur vers le labyrinthe à libérer.
  */
 void liberer_labyrinthe(Labyrinthe *labyrinthe);
 
 
 
 
-
 /**
- *@brief charge un labyrinthe à partir d'une liste de fichier
- *@param 
- *@param 
- *@return 
+ * @brief Charge un labyrinthe en mémoire depuis un fichier .cfg.
+ *
+ * Ouvre et lit un fichier de sauvegarde (ex: "./data/nom_du_lab.cfg")
+ * pour allouer et initialiser une nouvelle structure Labyrinthe avec
+ * les dimensions, le nom, et la grille sauvegardés.
+ *
+ * @param filename Le nom du labyrinthe à charger (par exemple, "MonLab").
+ * La fonction construit le chemin complet du fichier (./data/MonLab.cfg).
+ * @return Un pointeur vers la structure Labyrinthe allouée, ou NULL si le
+ * fichier n'a pas pu être ouvert ou lu.
  */
 Labyrinthe *charger_labyrinthe(const char *filename);
-
-
-/**
- * @brief 
- * 
- * @param lab 
- */
-void nettoyer_labyrinthe(Labyrinthe * lab);
-
 
 #endif
 

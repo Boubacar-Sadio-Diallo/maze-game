@@ -1,0 +1,29 @@
+\doxysection{score.\+h}
+\hypertarget{score_8h_source}{}\label{score_8h_source}\index{include/score.h@{include/score.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}player.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ SCORE\_H}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ SCORE\_H\ }}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{struct_score_entry_a7350293c65303456d9403b7729123015}{nom}}[50];\ \ \ \ \ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_score_entry_a5a264456436213bc2b325abd868e74b6}{score\_final}};\ \ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{struct_score_entry_a3d70f07f97469b544788ae209349a640}{moves}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00022\ \}\ \mbox{\hyperlink{struct_score_entry}{ScoreEntry}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00033\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{score_8c_a63d97a48ae9df3b4787e4cb55291763e}{generer\_nom\_fichier\_score}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *nom\_lab,\ \textcolor{keywordtype}{char}\ *buffer,\ \textcolor{keywordtype}{size\_t}\ buffer\_size);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00042\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{score_8c_a35d090e8fe8e58d5d562c224b365b53d}{gerer\_highscore}}(Labyrinthe\ *lab,\ Player\ *\mbox{\hyperlink{structplayer}{player}});}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{score_8c_a2fdf49ba70627c3877ad425992e26ded}{afficher\_scores}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *nom\_labyrinthe);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ }
+
+\end{DoxyCode}

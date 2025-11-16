@@ -1,0 +1,90 @@
+\doxysection{Référence du fichier src/score.c}
+\hypertarget{score_8c}{}\label{score_8c}\index{src/score.c@{src/score.c}}
+
+
+Implémentation du système de lecture et d\textquotesingle{}écriture des scores.  
+
+
+{\ttfamily \#include "{}../include/score.\+h"{}}\newline
+{\ttfamily \#include "{}util.\+c"{}}\newline
+\doxysubsubsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{score_8c_a63d97a48ae9df3b4787e4cb55291763e}{generer\+\_\+nom\+\_\+fichier\+\_\+score}} (const char \texorpdfstring{$\ast$}{*}nom\+\_\+lab, char \texorpdfstring{$\ast$}{*}buffer, size\+\_\+t buffer\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Construit le chemin complet vers le fichier .score. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{score_8c_a2fdf49ba70627c3877ad425992e26ded}{afficher\+\_\+scores}} (const char \texorpdfstring{$\ast$}{*}nom\+\_\+labyrinthe)
+\begin{DoxyCompactList}\small\item\em Affiche les 10 meilleurs scores enregistrés pour un labyrinthe. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{score_8c_a35d090e8fe8e58d5d562c224b365b53d}{gerer\+\_\+highscore}} (Labyrinthe \texorpdfstring{$\ast$}{*}lab, Player \texorpdfstring{$\ast$}{*}joueur)
+\begin{DoxyCompactList}\small\item\em Gère la logique de fin de partie pour les meilleurs scores. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Description détaillée}
+Implémentation du système de lecture et d\textquotesingle{}écriture des scores. 
+
+\begin{DoxyAuthor}{Auteur}
+Votre Diallo Boubacar Sadio 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+9 Novembre 2025 
+\end{DoxyDate}
+
+
+\label{doc-func-members}
+\Hypertarget{score_8c_doc-func-members}
+\doxysubsection{Documentation des fonctions}
+\Hypertarget{score_8c_a2fdf49ba70627c3877ad425992e26ded}\index{score.c@{score.c}!afficher\_scores@{afficher\_scores}}
+\index{afficher\_scores@{afficher\_scores}!score.c@{score.c}}
+\doxysubsubsection{\texorpdfstring{afficher\_scores()}{afficher\_scores()}}
+{\footnotesize\ttfamily \label{score_8c_a2fdf49ba70627c3877ad425992e26ded} 
+void afficher\+\_\+scores (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{nom\+\_\+labyrinthe}{}\end{DoxyParamCaption})}
+
+
+
+Affiche les 10 meilleurs scores enregistrés pour un labyrinthe. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em nom\+\_\+labyrinthe} & Le nom du labyrinthe (ex\+: "{}\+Mon\+Lab"{}) pour lequel afficher less scores. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{score_8c_a63d97a48ae9df3b4787e4cb55291763e}\index{score.c@{score.c}!generer\_nom\_fichier\_score@{generer\_nom\_fichier\_score}}
+\index{generer\_nom\_fichier\_score@{generer\_nom\_fichier\_score}!score.c@{score.c}}
+\doxysubsubsection{\texorpdfstring{generer\_nom\_fichier\_score()}{generer\_nom\_fichier\_score()}}
+{\footnotesize\ttfamily \label{score_8c_a63d97a48ae9df3b4787e4cb55291763e} 
+void generer\+\_\+nom\+\_\+fichier\+\_\+score (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{nom\+\_\+lab}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{buffer}{, }\item[{size\+\_\+t}]{buffer\+\_\+size}{}\end{DoxyParamCaption})}
+
+
+
+Construit le chemin complet vers le fichier .score. 
+
+
+\begin{DoxyItemize}
+\item Cette fonction utilitaire génère un chemin de fichier (par exemple, "{}./data/\+Mon\+Lab.\+score"{}) à partir d\textquotesingle{}un nom de labyrinthe et le place dans le buffer fourni.
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Paramètres}
+{\em nom\+\_\+lab} & Le nom du labyrinthe (ex\+: "{}\+Mon\+Lab"{}). \\
+\hline
+{\em buffer} & Le buffer de sortie où écrire le chemin complet. \\
+\hline
+{\em buffer\+\_\+size} & La taille maximale du buffer de sortie (pour éviter les dépassements). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{score_8c_a35d090e8fe8e58d5d562c224b365b53d}\index{score.c@{score.c}!gerer\_highscore@{gerer\_highscore}}
+\index{gerer\_highscore@{gerer\_highscore}!score.c@{score.c}}
+\doxysubsubsection{\texorpdfstring{gerer\_highscore()}{gerer\_highscore()}}
+{\footnotesize\ttfamily \label{score_8c_a35d090e8fe8e58d5d562c224b365b53d} 
+void gerer\+\_\+highscore (\begin{DoxyParamCaption}\item[{Labyrinthe \texorpdfstring{$\ast$}{*}}]{lab}{, }\item[{Player \texorpdfstring{$\ast$}{*}}]{joueur}{}\end{DoxyParamCaption})}
+
+
+
+Gère la logique de fin de partie pour les meilleurs scores. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em lab} & Pointeur vers le labyrinthe, utilisé pour obtenir le nom (lab-\/\texorpdfstring{$>$}{>}nom) \\
+\hline
+{\em player} & Pointeur vers le joueur, utilisé pour lire le score brut (player-\/\texorpdfstring{$>$}{>}score) et le nombre de coups (player-\/\texorpdfstring{$>$}{>}moves). \\
+\hline
+\end{DoxyParams}

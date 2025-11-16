@@ -1,12 +1,7 @@
 #include <stdlib.h> 
 #include "../include/labyrinthe.h"
 
-/**
- * @brief 
- * 
- * @param murs 
- * @param n 
- */
+
 void melanger_murs(Cellule *murs, int n) {
     for (int i = n-1; i > 0; i--) {
         int j = rand() % (i+1);
@@ -17,7 +12,6 @@ void melanger_murs(Cellule *murs, int n) {
 }
 
 
-/* Trouver la racine de l'ensemble (Union-Find simple) */
 int find(int *sets, int index) {
     if (sets[index] != index){
         sets[index] = find(sets, sets[index]);
@@ -25,7 +19,7 @@ int find(int *sets, int index) {
     return sets[index];
 }
 
-/* Fusionner deux ensembles */
+
 void unite(int *sets, int a, int b) {
     int ra = find(sets, a);
     int rb = find(sets, b);
@@ -43,8 +37,7 @@ void fusionner_identifiants_labyrinthe(Labyrinthe *lab, int ancien_id, int nouve
     }
 }
 
-/**
- */
+
 void associe_valeur_cellule(Labyrinthe *lab) {
     int num = 1;
     for (unsigned int i = 1; i < lab->hauteur; i += 2) {
@@ -53,12 +46,9 @@ void associe_valeur_cellule(Labyrinthe *lab) {
         }
     }
 }
-#include "../include/generation.h"
-#include <stdlib.h> // Pour rand()
 
-/**
- * @brief Tente de placer N objets d'un certain type sur des cases vides (code 0).
- */
+
+
 void placer_un_type_objet(Labyrinthe *lab, int nb_objets, int code_objet) {
     int objets_places = 0;
     
@@ -83,14 +73,13 @@ void placer_un_type_objet(Labyrinthe *lab, int nb_objets, int code_objet) {
     }
 }
 
-/**
- * @brief Place la clé, les bonus et les malus dans le labyrinthe.
- *
- */
+
 void placer_objets(Labyrinthe *lab) {
     int nb_cles = NB_CLES;
-    int nb_bonus = NB_BONUS; 
-    int nb_malus = NB_MALUS;
+
+    int nb_cellules_vides = (lab->hauteur * lab->largeur) / 4;
+    int nb_bonus = (nb_cellules_vides / 50 > 1) ? (nb_cellules_vides / 50) : 1; 
+    int nb_malus = (nb_cellules_vides / 50 > 1) ? (nb_cellules_vides / 50) : 1; 
 
     // Placer la clé
     placer_un_type_objet(lab, nb_cles, CLE);
@@ -103,8 +92,7 @@ void placer_objets(Labyrinthe *lab) {
 }
 
 void generer_labyrinthe(Labyrinthe *lab) {
-    // int hauteur = HAUTEUR;
-    // int largeur = LARGEUR;
+    
     associe_valeur_cellule(lab);
 
     // Nombre maximum de cellules
@@ -112,11 +100,16 @@ void generer_labyrinthe(Labyrinthe *lab) {
 
     // Initialiser les ensembles pour Union-Find
     int *sets = malloc((nb_cellules+1) * sizeof(int));
+    if(sets == NULL) return;
     for (int i = 1; i <= nb_cellules; i++)
         sets[i] = i;
 
-    // Créer liste des murs entre cellules
-    Cellule murs[1000];
+    int max_murs = (lab->hauteur/2 * lab->largeur/2) * 2;
+    Cellule *murs = malloc(max_murs *sizeof(Cellule));
+    if(murs == NULL){
+        free(sets);
+        return;
+    };
     int nb_murs = 0;
     for (unsigned int i = 1; i < lab->hauteur-1; i += 2) {
         for (unsigned int j = 1; j < lab->largeur-1; j += 2) {
@@ -157,8 +150,16 @@ void generer_labyrinthe(Labyrinthe *lab) {
             fusionner_identifiants_labyrinthe(lab, id2, id1);
         }
     }
-
+    // pour un lab
+    for (unsigned int i = 0; i < lab->hauteur; i++) {
+        for (unsigned int j = 0; j < lab->largeur; j++) {
+            if (lab->array[i][j] > 0) {
+                lab->array[i][j] = 0; // Remet les cases chemin à 0
+            }
+        }
+    }
     //et on place les objets
     placer_objets(lab);
     free(sets);
+    free(murs);
 }

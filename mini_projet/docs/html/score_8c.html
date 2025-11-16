@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.15.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Mini-Projet Labyrinthe: Référence du fichier src/score.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Mini-Projet Labyrinthe
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.15.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Recherche',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('score_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Chargement...</div>
+<div class="SRStatus" id="Searching">Recherche...</div>
+<div class="SRStatus" id="NoMatches">Aucune correspondance</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Référence du fichier score.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Implémentation du système de lecture et d'écriture des scores.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &quot;../include/score.h&quot;</code><br />
+<code>#include &quot;util.c&quot;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a63d97a48ae9df3b4787e4cb55291763e" id="r_a63d97a48ae9df3b4787e4cb55291763e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63d97a48ae9df3b4787e4cb55291763e">generer_nom_fichier_score</a> (const char *nom_lab, char *buffer, size_t buffer_size)</td></tr>
+<tr class="memdesc:a63d97a48ae9df3b4787e4cb55291763e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit le chemin complet vers le fichier .score.  <br /></td></tr>
+<tr class="memitem:a2fdf49ba70627c3877ad425992e26ded" id="r_a2fdf49ba70627c3877ad425992e26ded"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2fdf49ba70627c3877ad425992e26ded">afficher_scores</a> (const char *nom_labyrinthe)</td></tr>
+<tr class="memdesc:a2fdf49ba70627c3877ad425992e26ded"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche les 10 meilleurs scores enregistrés pour un labyrinthe.  <br /></td></tr>
+<tr class="memitem:a35d090e8fe8e58d5d562c224b365b53d" id="r_a35d090e8fe8e58d5d562c224b365b53d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a35d090e8fe8e58d5d562c224b365b53d">gerer_highscore</a> (Labyrinthe *lab, Player *joueur)</td></tr>
+<tr class="memdesc:a35d090e8fe8e58d5d562c224b365b53d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gère la logique de fin de partie pour les meilleurs scores.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Implémentation du système de lecture et d'écriture des scores. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Votre Diallo Boubacar Sadio </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>9 Novembre 2025 </dd></dl>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentation des fonctions</h2>
+<a id="a2fdf49ba70627c3877ad425992e26ded" name="a2fdf49ba70627c3877ad425992e26ded"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fdf49ba70627c3877ad425992e26ded">&#9670;&#160;</a></span>afficher_scores()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void afficher_scores </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>nom_labyrinthe</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Affiche les 10 meilleurs scores enregistrés pour un labyrinthe. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nom_labyrinthe</td><td>Le nom du labyrinthe (ex: "MonLab") pour lequel afficher less scores. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a63d97a48ae9df3b4787e4cb55291763e" name="a63d97a48ae9df3b4787e4cb55291763e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63d97a48ae9df3b4787e4cb55291763e">&#9670;&#160;</a></span>generer_nom_fichier_score()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void generer_nom_fichier_score </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>nom_lab</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>buffer</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>buffer_size</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construit le chemin complet vers le fichier .score. </p>
+<ul>
+<li>Cette fonction utilitaire génère un chemin de fichier (par exemple, "./data/MonLab.score") à partir d'un nom de labyrinthe et le place dans le buffer fourni.</li>
+</ul>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nom_lab</td><td>Le nom du labyrinthe (ex: "MonLab"). </td></tr>
+    <tr><td class="paramname">buffer</td><td>Le buffer de sortie où écrire le chemin complet. </td></tr>
+    <tr><td class="paramname">buffer_size</td><td>La taille maximale du buffer de sortie (pour éviter les dépassements). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a35d090e8fe8e58d5d562c224b365b53d" name="a35d090e8fe8e58d5d562c224b365b53d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a35d090e8fe8e58d5d562c224b365b53d">&#9670;&#160;</a></span>gerer_highscore()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void gerer_highscore </td>
+          <td>(</td>
+          <td class="paramtype">Labyrinthe *</td>          <td class="paramname"><span class="paramname"><em>lab</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Player *</td>          <td class="paramname"><span class="paramname"><em>joueur</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gère la logique de fin de partie pour les meilleurs scores. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lab</td><td>Pointeur vers le labyrinthe, utilisé pour obtenir le nom (lab-&gt;nom) </td></tr>
+    <tr><td class="paramname">player</td><td>Pointeur vers le joueur, utilisé pour lire le score brut (player-&gt;score) et le nombre de coups (player-&gt;moves). </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><b>src</b></li><li class="navelem"><a href="score_8c.html">score.c</a></li>
+    <li class="footer">Généré par <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
+  </ul>
+</div>
+</body>
+</html>

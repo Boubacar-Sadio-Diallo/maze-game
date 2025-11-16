@@ -1,1 +1,0 @@
-// à f  aire dès lors qu'une fonction est décrite
